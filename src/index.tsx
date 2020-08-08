@@ -17,7 +17,7 @@ function App() {
         <Column>
           <ColumnHeader>TODO</ColumnHeader>
 
-          <Card>朝食</Card>
+          <Card>もくもくする</Card>
           <Card>昼食</Card>
           <Card>夕食</Card>
         </Column>
