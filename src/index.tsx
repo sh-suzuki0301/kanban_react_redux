@@ -14,30 +14,30 @@ function App() {
 
       <MainArea>
         <HorizontalScroll>
-        <Column>
-          <ColumnHeader>TODO</ColumnHeader>
+          <Column>
+            <ColumnHeader>TODO</ColumnHeader>
 
-          <Card>もくもくする</Card>
-          <Card>昼食</Card>
-          <Card>夕食</Card>
-        </Column>
+            <Card>もくもくする</Card>
+            <Card>昼食</Card>
+            <Card>夕食</Card>
+          </Column>
 
-        <Column>
-          <ColumnHeader>Doing</ColumnHeader>
+          <Column>
+            <ColumnHeader>Doing</ColumnHeader>
 
-          <Card>洗顔</Card>
-          <Card>歯磨き</Card>
-        </Column>
+            <Card>洗顔</Card>
+            <Card>歯磨き</Card>
+          </Column>
 
-        <Column>
-          <ColumnHeader>Wating</ColumnHeader>
-        </Column>
+          <Column>
+            <ColumnHeader>Wating</ColumnHeader>
+          </Column>
 
-        <Column>
-          <ColumnHeader>Done</ColumnHeader>
+          <Column>
+            <ColumnHeader>Done</ColumnHeader>
 
-          <Card>起きる</Card>
-        </Column>
+            <Card>起きる</Card>
+          </Column>
         </HorizontalScroll>
       </MainArea>
     </Container>
@@ -45,41 +45,41 @@ function App() {
 }
 
 const Container = styled.div`
- display: flex;
- flex-flow: column;
- height: 100%;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 `
 
 const Header = styled.div`
- display: flex;
- align-items: center;
- justify-content: space-between;
- padding: 8px 16px;
- background-color: ${color.Navy};
- flex-shrink: 0;
- color: ${color.Silver};
- font-size: 16px;
- font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: ${color.Navy};
+  flex-shrink: 0;
+  color: ${color.Silver};
+  font-size: 16px;
+  font-weight: bold;
 `
 
 const Logo = styled.div`
- height: 100%;
- padding: 16px 0;
- overflow-y: auto;
+  height: 100%;
+  padding: 16px 0;
+  overflow-y: auto;
 `
 
 const CardFilter = styled.input`
- display: flex;
- align-items: center;
- min-width: 300px;
- border: solid 1px ${color.Silver};
- border-radius: 3px;
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  border: solid 1px ${color.Silver};
+  border-radius: 3px;
 `
 
 const MainArea = styled.div`
- height: 100%;
- padding: 16px 0;
- overflow-y: auto;
+  height: 100%;
+  padding: 16px 0;
+  overflow-y: auto;
 `
 
 const HorizontalScroll = styled.div`
@@ -114,20 +114,20 @@ const Column = styled.div`
 `
 
 const ColumnHeader = styled.div`
- display: flex;
- justify-content: flex-start;
- align-items: center;
- padding: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
 `
 
 const Card = styled.div`
- position: relative;
- border: solid 1px ${color.Silver};
- border-radius: 6px;
- box-shadow: 0 1px 3px hsla(0, 0%, 7%, 0.1);
- padding: 8px 32px;
- background-color: ${color.White};
- cursor: move;
+  position: relative;
+  border: solid 1px ${color.Silver};
+  border-radius: 6px;
+  box-shadow: 0 1px 3px hsla(0, 0%, 7%, 0.1);
+  padding: 8px 32px;
+  background-color: ${color.White};
+  cursor: move;
 `
 
 const GlobalStyle = createGlobalStyle`
