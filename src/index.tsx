@@ -111,6 +111,7 @@ const Column = styled.div`
 
  > :not(:last-child) {
    flex-shrink: 0;
+ }
 `
 
 const ColumnHeader = styled.div`
