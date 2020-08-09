@@ -5,37 +5,37 @@ import { Card } from './Card'
 import { PlusIcon } from './icon'
 
 export function Column({
-    title,
-    cards,
+  title,
+  cards,
 }: {
-    title?: string
-    cards: {
-        id: string
-        text?: string
-    }[]
+  title?: string
+  cards: {
+    id: string
+    text?: string
+  }[]
 }) {
-    const totalCount = cards.length
+  const totalCount = cards.length
 
-    return (
-        <Container>
-            <Header>
-                <CountBadge>{totalCount}</CountBadge>
-                <ColumnName>{title}</ColumnName>
+  return (
+    <Container>
+      <Header>
+        <CountBadge>{totalCount}</CountBadge>
+        <ColumnName>{title}</ColumnName>
 
-                <AddButton />
-            </Header>
+        <AddButton />
+      </Header>
 
-            <VerticalScroll>
-                {cards.map(({id, text}) => (
-                    <Card key={id} text={text} />
-                ))}
-            </VerticalScroll>
-        </Container>
-    )
+      <VerticalScroll>
+        {cards.map(({ id, text }) => (
+          <Card key={id} text={text} />
+        ))}
+      </VerticalScroll>
+    </Container>
+  )
 }
 
 const Container = styled.div`
-display: flex;
+  display: flex;
   flex-flow: column;
   width: 355px;
   height: 100%;
@@ -49,14 +49,14 @@ display: flex;
 `
 
 const Header = styled.div`
-display: flex;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 8px;
 `
 
 const CountBadge = styled.div`
-margin-right: 8px;
+  margin-right: 8px;
   border-radius: 20px;
   padding: 2px 6px;
   color: ${color.Black};
@@ -66,16 +66,16 @@ margin-right: 8px;
 `
 
 const ColumnName = styled.div`
-color: ${color.Black};
+  color: ${color.Black};
   font-size: 14px;
   font-weight: bold;
 `
 
 const AddButton = styled.button.attrs({
-    type: 'button',
-    children: <PlusIcon />,
+  type: 'button',
+  children: <PlusIcon />,
 })`
-margin-left: auto;
+  margin-left: auto;
   color: ${color.Black};
 
   :hover {
@@ -84,7 +84,7 @@ margin-left: auto;
 `
 
 const VerticalScroll = styled.div`
-height: 100%;
+  height: 100%;
   padding: 8px;
   overflow-y: auto;
   flex: 1 1 auto;

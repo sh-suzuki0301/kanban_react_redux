@@ -12,3 +12,4 @@ export const GlobalStyle = createGlobalStyle`
 
     overflow-wrap: break-word;
   }
+  `
