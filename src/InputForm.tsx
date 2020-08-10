@@ -61,17 +61,17 @@ const Input = styled.textarea`
   }
 `
 const ButtonRow = styled.div`
-display: flex;
+  display: flex;
 
-> :not(:first-child) {
-  margin-left: 8px;
-}
+  > :not(:first-child) {
+    margin-left: 8px;
+  }
 `
 
 const AddButton = styled(ConfirmButton).attrs({
-    children: 'Add',
+  children: 'Add',
 })
 
 const CancelButton = styled(Button).attrs({
-    children: 'Cancel',
+  children: 'Cancel',
 })
