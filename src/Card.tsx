@@ -7,7 +7,7 @@ export function Card({ text }: { text?: string }) {
   return (
     <Container>
       <CheckIcon />
-      {/* textにhttp/httpsが含まれてたらリンクにする */}
+      {/* textにhttp/https */}
       {text?.split(/(https?:\/\/\S+)/g).map((fragment, i) =>
         i % 2 === 0 ? (
           <Text key={i}>{fragment}</Text>
