@@ -16,6 +16,7 @@ export function InputForm({
   onCancel?(): void
   className?: string
 }) {
+  // 入力が空の時にボタン操作を不可能にする
   const disabled = !value?.trim()
   const handleConfirm = () => {
     if (disabled) return onConfirm?.()
