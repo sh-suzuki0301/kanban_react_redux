@@ -70,8 +70,8 @@ const ButtonRow = styled.div`
 
 const AddButton = styled(ConfirmButton).attrs({
   children: 'Add',
-})
+})``
 
 const CancelButton = styled(Button).attrs({
   children: 'Cancel',
-})
+})``
