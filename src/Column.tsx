@@ -20,7 +20,7 @@ export function Column({
   const [text, setText] = useState('')
 
   const [inputMode, setInputMode] = useState(false)
-  const toggleInput = () => setInputMode(v => !v)
+  const toggleInput = () => setInputMode(!inputMode)
   const confirmInput = () => setText('')
   const cancellInput = () => setInputMode(false)
 
