@@ -15,7 +15,7 @@ export function Header({
     <Container className={className}>
       <Logo>Sho board</Logo>
 
-      <CardFilter value={filterValue} onChnage={onFilterChange}/>
+      <CardFilter value={filterValue} onChange={onFilterChange}/>
     </Container>
   )
 }
