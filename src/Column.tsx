@@ -11,6 +11,7 @@ export function Column({
   cards: rawCards,
 }: {
   title?: string
+  filterValue?: string
   cards: {
     id: string
     text?: string
