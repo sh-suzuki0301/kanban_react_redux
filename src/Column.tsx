@@ -53,8 +53,12 @@ export function Column({
 
       <VerticalScroll>
         {cards.map(({ id, text }) => (
-          <Card key={id} text={text} />
+          <Card.DropArea key={id}>
+            <Card text={text} />
+          </Card.DropArea>
         ))}
+
+      <Card.DropArea style={{ height: '100%' }} />
       </VerticalScroll>
     </Container>
   )
