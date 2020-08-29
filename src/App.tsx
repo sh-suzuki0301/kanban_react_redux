@@ -4,7 +4,7 @@ import { Header as _Header } from './Header'
 import { Column } from './Column'
 
 export function App() {
-  const[filterValue, setFilterValue] = useState('')
+  const [filterValue, setFilterValue] = useState('')
   const [columns, setColumns] = useState([
     {
       id: 'A',
@@ -35,7 +35,9 @@ export function App() {
     },
   ])
 
-  const [draggindCardID, setDraggingCardID] = useState<string | undefined>(undefined,)
+  const [draggindCardID, setDraggingCardID] = useState<string | undefined>(
+    undefined,
+  )
 
   const dropCardTo = (toID: string) => {
     const fromID = draggindCardID
@@ -55,7 +57,7 @@ export function App() {
       return columns.map(column => {
         let newColumn = column
 
-        if(newColumn.cards.some(c => c.id === fromID)) {
+        if (newColumn.cards.some(c => c.id === fromID)) {
           newColumn = {
             ...newColumn,
             cards: newColumn.cards.filter(c => c.id !== fromID),
@@ -66,15 +68,16 @@ export function App() {
         if (newColumn.id === toID) {
           newColumn = {
             ...newColumn,
-            cards: [...newColumn.cards, card]
+            cards: [...newColumn.cards, card],
           }
         }
-        // 
+        //
         else if (newColumn.cards.some(c => c.id === toID)) {
           newColumn = {
             ...newColumn,
-            cards: newColumn.cards.flatMap(c => 
-              c.id === toID ? [card, c] : [c])
+            cards: newColumn.cards.flatMap(c =>
+              c.id === toID ? [card, c] : [c],
+            ),
           }
         }
 
@@ -85,11 +88,11 @@ export function App() {
 
   return (
     <Container>
-      <Header filterValue={filterValue} onFilterChange={setFilterValue}/>
+      <Header filterValue={filterValue} onFilterChange={setFilterValue} />
 
       <MainArea>
         <HorizontalScroll>
-          {columns.map(( {id: columnID, title, cards}) =>(
+          {columns.map(({ id: columnID, title, cards }) => (
             <Column
               key={columnID}
               title={title}

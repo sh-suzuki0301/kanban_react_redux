@@ -22,8 +22,8 @@ export function Column({
   onCardDrop?(entered: string | null): void
 }) {
   const filterValue = rawFilterValue?.trim()
-  const keywords = filterValue?.toLowerCase().split(/\s+/g)??[]
-  const cards = rawCards.filter(({text}) =>
+  const keywords = filterValue?.toLowerCase().split(/\s+/g) ?? []
+  const cards = rawCards.filter(({ text }) =>
     keywords?.every(w => text?.toLowerCase().includes(w)),
   )
   const totalCount = rawCards.length
@@ -35,7 +35,9 @@ export function Column({
   const confirmInput = () => setText('')
   const cancellInput = () => setInputMode(false)
 
-  const [draggingCardID, setDraggingCardID] = useState<string | undefined>(undefined,)
+  const [draggingCardID, setDraggingCardID] = useState<string | undefined>(
+    undefined,
+  )
   const handleCardDragStart = (id: string) => {
     setDraggingCardID(id)
     onCardDragStart?.(id)
@@ -66,22 +68,28 @@ export function Column({
           <Card.DropArea
             key={id}
             // 選択したカードと同じID || 次のカードもエフェクトをdisabled
-            disabled={draggingCardID !== undefined && (id === draggingCardID || cards[i - 1]?.id === draggingCardID)}
-            onDrop={()=> onCardDrop?.(id)}
-            >
+            disabled={
+              draggingCardID !== undefined &&
+              (id === draggingCardID || cards[i - 1]?.id === draggingCardID)
+            }
+            onDrop={() => onCardDrop?.(id)}
+          >
             <Card
               text={text}
-              onDragStart={()=> handleCardDragStart(id)}
-              onDragEnd={()=> setDraggingCardID(undefined)}
-               />
+              onDragStart={() => handleCardDragStart(id)}
+              onDragEnd={() => setDraggingCardID(undefined)}
+            />
           </Card.DropArea>
         ))}
 
-      <Card.DropArea
-        style={{ height: '100%' }}
-        // カードの最後尾にきたらエフェクトをdisabled
-        disabled={draggingCardID !== undefined && cards[cards.length -1]?.id === draggingCardID}
-        onDrop={()=> onCardDrop?.(null)}
+        <Card.DropArea
+          style={{ height: '100%' }}
+          // カードの最後尾にきたらエフェクトをdisabled
+          disabled={
+            draggingCardID !== undefined &&
+            cards[cards.length - 1]?.id === draggingCardID
+          }
+          onDrop={() => onCardDrop?.(null)}
         />
       </VerticalScroll>
     </Container>
@@ -142,9 +150,9 @@ const InputForm = styled(_InputForm)`
 `
 
 const ResultCount = styled.div`
- color: ${color.Black};
- font-size: 12px;
- text-align: center;
+  color: ${color.Black};
+  font-size: 12px;
+  text-align: center;
 `
 
 const VerticalScroll = styled.div`

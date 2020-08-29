@@ -6,18 +6,18 @@ import { SearchIcon as _SearchIcon } from './icon'
 export function CardFilter({
   value,
   onChange,
-}:
-  {
-    value?: string
-    onChange?(value: string): void
-  }) {
+}: {
+  value?: string
+  onChange?(value: string): void
+}) {
   return (
     <Container>
       <SearchIcon />
       <Input
         placeholder="Filter cards"
         value={value}
-        onChange={ev => onChange?.(ev.currentTarget.value)}/>
+        onChange={ev => onChange?.(ev.currentTarget.value)}
+      />
     </Container>
   )
 }

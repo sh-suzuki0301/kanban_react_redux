@@ -6,16 +6,17 @@ import { CardFilter } from './CardFilter'
 export function Header({
   filterValue,
   onFilterChange,
-  className }: {
-    filterValue?: string
-    onFilterChange?(value: string): void
-    className?: string
-  }) {
+  className,
+}: {
+  filterValue?: string
+  onFilterChange?(value: string): void
+  className?: string
+}) {
   return (
     <Container className={className}>
       <Logo>Sho board</Logo>
 
-      <CardFilter value={filterValue} onChange={onFilterChange}/>
+      <CardFilter value={filterValue} onChange={onFilterChange} />
     </Container>
   )
 }

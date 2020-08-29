@@ -8,7 +8,7 @@ Card.DropArea = DropArea
 export function Card({
   text,
   onDragStart,
-  onDragEnd
+  onDragEnd,
 }: {
   text?: string
   onDragStart?(): void
@@ -18,15 +18,15 @@ export function Card({
 
   return (
     <Container
-    style={{ opacity: drag ? 0.5 : undefined}}
-    onDragStart={()=> {
-      onDragStart?.()
-      setDrag(true)
-    }}
-    onDragEnd={()=>{
-      onDragEnd?.()
-      setDrag(false)
-    }}
+      style={{ opacity: drag ? 0.5 : undefined }}
+      onDragStart={() => {
+        onDragStart?.()
+        setDrag(true)
+      }}
+      onDragEnd={() => {
+        onDragEnd?.()
+        setDrag(false)
+      }}
     >
       <CheckIcon />
       {/* textにhttp/https */}
@@ -113,34 +113,34 @@ function DropArea({
 
   return (
     <DropAreaContainer
-     style={style}
-     className={className}
-     onDragOver={ev => {
-       if(disabled) return
+      style={style}
+      className={className}
+      onDragOver={ev => {
+        if (disabled) return
 
-       ev.preventDefault()
-       onDragOver(() => setIsTarget(false))
-     }}
-     onDragEnter={()=> {
-       if(disabled || dragOver.current) return
+        ev.preventDefault()
+        onDragOver(() => setIsTarget(false))
+      }}
+      onDragEnter={() => {
+        if (disabled || dragOver.current) return
 
-       setIsTarget(true)
-     }}
-     onDrop={() => {
-       if(disabled) return
+        setIsTarget(true)
+      }}
+      onDrop={() => {
+        if (disabled) return
 
-       setIsTarget(false)
-       onDrop?.()
-     }}
+        setIsTarget(false)
+        onDrop?.()
+      }}
     >
-    <DropAreaIndicator
-    style={{
-      height: !visible ? 0 : undefined,
-      borderWidth: !visible ? 0: undefined,
-    }}
-    />
+      <DropAreaIndicator
+        style={{
+          height: !visible ? 0 : undefined,
+          borderWidth: !visible ? 0 : undefined,
+        }}
+      />
 
-    {children}
+      {children}
     </DropAreaContainer>
   )
 }
@@ -148,40 +148,40 @@ function DropArea({
 /**
  * dragOverイベントが継続中かどうかのフラグをrefとして返す
  * timeout経過後にフラグが自動的にfalseになる
- * 
+ *
  * @param timeout 自動でフラグをfalseにするまでの時間(ms)
  */
- function useDragAutoLeave(timeout: number = 100) {
-   const dragOver = useRef(false)
-   const timer = useRef(0)
+function useDragAutoLeave(timeout: number = 100) {
+  const dragOver = useRef(false)
+  const timer = useRef(0)
 
-   return [
-     dragOver,
+  return [
+    dragOver,
 
-     /**
-      * @param onDragLeave フラグがfalseになるときに呼ぶコールバック
-      */
-     (onDragLeave?: () => void) => {
-       clearTimeout(timer.current)
+    /**
+     * @param onDragLeave フラグがfalseになるときに呼ぶコールバック
+     */
+    (onDragLeave?: () => void) => {
+      clearTimeout(timer.current)
 
-       dragOver.current = true
-       timer.current = setTimeout(() => {
-         dragOver.current = false
-         onDragLeave?.()
-       }, timeout)
-     },
-   ] as const
- }
+      dragOver.current = true
+      timer.current = setTimeout(() => {
+        dragOver.current = false
+        onDragLeave?.()
+      }, timeout)
+    },
+  ] as const
+}
 
- const DropAreaContainer = styled.div`
- > :not(:first-child) {
-   margin-top: 8px;
- }
+const DropAreaContainer = styled.div`
+  > :not(:first-child) {
+    margin-top: 8px;
+  }
 `
 
 const DropAreaIndicator = styled.div`
- height: 40px;
- border: dashed 3px ${color.Gray};
- border-radius: 6px;
- transition: all 50ms ease-out;
+  height: 40px;
+  border: dashed 3px ${color.Gray};
+  border-radius: 6px;
+  transition: all 50ms ease-out;
 `

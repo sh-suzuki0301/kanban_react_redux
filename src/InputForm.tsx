@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import * as color from './color'
 import { Button, ConfirmButton } from './Button'
@@ -24,7 +24,7 @@ export function InputForm({
 
   // CustomHookを呼び出し
   const ref = useAutoFitToContentHeight(value)
-  
+
   return (
     <Container className={className}>
       <Input
@@ -50,7 +50,7 @@ export function InputForm({
 
 /**
  * textareaの高さを自動調節するCustom Hooks
- * 
+ *
  * @param content テキストエリアの内容
  */
 function useAutoFitToContentHeight(content: string | undefined) {
@@ -58,13 +58,12 @@ function useAutoFitToContentHeight(content: string | undefined) {
 
   useEffect(() => {
     const el = ref.current
-    if(!el) return
+    if (!el) return
 
     const { borderTopWidth, borderBottomWidth } = getComputedStyle(el)
     el.style.height = 'auto'
     el.style.height = `calc(${borderTopWidth} + ${el.scrollHeight}px + ${borderBottomWidth})`
-  },[content],
-  )
+  }, [content])
   return ref
 }
 
