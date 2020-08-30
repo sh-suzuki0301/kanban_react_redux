@@ -67,7 +67,7 @@ export function Column({
         {cards.map(({ id, text }, i) => (
           <Card.DropArea
             key={id}
-            // 選択したカードと同じID || 次のカードもエフェクトをdisabled
+            // 選択したカードと同じID || 次のカードもドロップオーバーエフェクトをdisabled
             disabled={
               draggingCardID !== undefined &&
               (id === draggingCardID || cards[i - 1]?.id === draggingCardID)
@@ -84,7 +84,7 @@ export function Column({
 
         <Card.DropArea
           style={{ height: '100%' }}
-          // カードの最後尾にきたらエフェクトをdisabled
+          // カードの最後尾にきたらドロップオーバーエフェクトをdisabled
           disabled={
             draggingCardID !== undefined &&
             cards[cards.length - 1]?.id === draggingCardID
