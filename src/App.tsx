@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import produce from 'immer'
 import { Header as _Header } from './Header'
 import { Column } from './Column'
 
@@ -47,43 +48,33 @@ export function App() {
 
     if (fromID === toID) return
 
-    setColumns(columns => {
-      const card = columns.flatMap(col => col.cards).find(c => c.id === fromID)
+    type Columns = typeof columns
+   setColumns(
+     produce((columns: Columns) => {
+       const card = columns
+         .flatMap(col => col.cards)
+         .find(c => c.id === fromID)
+       if (!card) return
 
-      if (!card) {
-        return columns
-      }
+       const fromColumn = columns.find(col =>
+         col.cards.some(c => c.id === fromID),
+       )
+       if (!fromColumn) return
 
-      return columns.map(column => {
-        let newColumn = column
+       fromColumn.cards = fromColumn.cards.filter(c => c.id !== fromID)
 
-        if (newColumn.cards.some(c => c.id === fromID)) {
-          newColumn = {
-            ...newColumn,
-            cards: newColumn.cards.filter(c => c.id !== fromID),
-          }
-        }
+       const toColumn = columns.find(
+         col => col.id === toID || col.cards.some(c => c.id === toID),
+       )
+       if (!toColumn) return
 
-        // 列の末尾に移動する
-        if (newColumn.id === toID) {
-          newColumn = {
-            ...newColumn,
-            cards: [...newColumn.cards, card],
-          }
-        }
-        //
-        else if (newColumn.cards.some(c => c.id === toID)) {
-          newColumn = {
-            ...newColumn,
-            cards: newColumn.cards.flatMap(c =>
-              c.id === toID ? [card, c] : [c],
-            ),
-          }
-        }
-
-        return newColumn
-      })
-    })
+       let index = toColumn.cards.findIndex(c => c.id === toID)
+       if (index < 0) {
+         index = toColumn.cards.length
+       }
+       toColumn.cards.splice(index, 0, card)
+     }),
+   )
   }
 
   return (
