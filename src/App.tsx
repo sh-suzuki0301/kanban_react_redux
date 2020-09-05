@@ -49,32 +49,32 @@ export function App() {
     if (fromID === toID) return
 
     type Columns = typeof columns
-   setColumns(
-     produce((columns: Columns) => {
-       const card = columns
-         .flatMap(col => col.cards)
-         .find(c => c.id === fromID)
-       if (!card) return
+    setColumns(
+      produce((columns: Columns) => {
+        const card = columns
+          .flatMap(col => col.cards)
+          .find(c => c.id === fromID)
+        if (!card) return
 
-       const fromColumn = columns.find(col =>
-         col.cards.some(c => c.id === fromID),
-       )
-       if (!fromColumn) return
+        const fromColumn = columns.find(col =>
+          col.cards.some(c => c.id === fromID),
+        )
+        if (!fromColumn) return
 
-       fromColumn.cards = fromColumn.cards.filter(c => c.id !== fromID)
+        fromColumn.cards = fromColumn.cards.filter(c => c.id !== fromID)
 
-       const toColumn = columns.find(
-         col => col.id === toID || col.cards.some(c => c.id === toID),
-       )
-       if (!toColumn) return
+        const toColumn = columns.find(
+          col => col.id === toID || col.cards.some(c => c.id === toID),
+        )
+        if (!toColumn) return
 
-       let index = toColumn.cards.findIndex(c => c.id === toID)
-       if (index < 0) {
-         index = toColumn.cards.length
-       }
-       toColumn.cards.splice(index, 0, card)
-     }),
-   )
+        let index = toColumn.cards.findIndex(c => c.id === toID)
+        if (index < 0) {
+          index = toColumn.cards.length
+        }
+        toColumn.cards.splice(index, 0, card)
+      }),
+    )
   }
 
   return (
