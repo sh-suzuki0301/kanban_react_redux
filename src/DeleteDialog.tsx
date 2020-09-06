@@ -4,24 +4,24 @@ import * as color from './color'
 import { Button, DangerButton } from './Button'
 
 export function DeleteDialog({
-    onConfirm,
-    onCancel,
-    className
+  onConfirm,
+  onCancel,
+  className,
 }: {
-    onConfirm?(): void
-    onCancel?(): void
-    className?: string
-}){
-    return(
-        <Container className={className}>
-            <Message>Are you sure to delete?</Message>
-            
-            <ButtonRow>
-                <DeleteButton onClick={onConfirm}/>
-                <CancelButton onClick={onCancel}/>
-            </ButtonRow>
-        </Container>
-    )
+  onConfirm?(): void
+  onCancel?(): void
+  className?: string
+}) {
+  return (
+    <Container className={className}>
+      <Message>Are you sure to delete?</Message>
+
+      <ButtonRow>
+        <DeleteButton onClick={onConfirm} />
+        <CancelButton onClick={onCancel} />
+      </ButtonRow>
+    </Container>
+  )
 }
 
 const Container = styled.div`
