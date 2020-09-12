@@ -2,25 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 
 export function Overlay({
-    onClick,
-    className,
-    children,
+  onClick,
+  className,
+  children,
 }: {
-    onClick?(): void
-    className?: string
-    children?: React.ReactNode
+  onClick?(): void
+  className?: string
+  children?: React.ReactNode
 }) {
-    return (
-        <Container
-        className={className}
-        onClick={ev=> {
-            if(ev.target !== ev.currentTarget) return
-            onClick?.()
-        }}
-        >
-        {children}
-        </Container>
-    )
+  return (
+    <Container
+      className={className}
+      onClick={ev => {
+        if (ev.target !== ev.currentTarget) return
+        onClick?.()
+      }}
+    >
+      {children}
+    </Container>
+  )
 }
 
 const Container = styled.div`

@@ -6,7 +6,6 @@ import { Column } from './Column'
 import { DeleteDialog } from './DeleteDialog'
 import { Overlay as _Overlay } from './Overlay'
 
-
 export function App() {
   const [filterValue, setFilterValue] = useState('')
   const [columns, setColumns] = useState([
@@ -140,7 +139,7 @@ const HorizontalScroll = styled.div`
 `
 
 const Overlay = styled(_Overlay)`
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
